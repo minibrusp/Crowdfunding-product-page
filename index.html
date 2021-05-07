@@ -4,8 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
 
-  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon-32x32.png">
   <link rel="stylesheet" href="src/css/styles.css">
+  <script src="src/js/scripts.js" defer></script>
   
   <title>Frontend Mentor | Crowdfunding product page</title>
 
@@ -21,7 +22,7 @@
       <label class="nav__burger" for="nav__checkbox"></label>
       <div class="nav__filter__container"></div>
       <ul>
-        <li><a href="#" title="To About page">About</a></li>
+        <li><a href="#about" title="To About page">About</a></li>
         <li><a href="#" title="To Discover page">Discover</a></li>
         <li><a href="#" title="To  page">Get Started</a></li>
       </ul>
@@ -58,14 +59,14 @@
         </div>
       </header>
 
-      <section class="about content__card">
+      <section class="about content__card" id="about">
         <h2>About this project</h2>
         <p>The Mastercraft Bamboo Monitor Riser is a sturdy and stylish platform that elevates your screen to a more comfortable viewing height. Placing your monitor at eye level has the potential to improve your posture and make you more comfortable while at work, helping you stay focused on the task at hand.
         </p>
         <p>Featuring artisan craftsmanship, the simplicity of design creates extra desk space below your computer to allow notepads, pens, and USB sticks to be stored under the stand.
         </p>
         <section class="promotional__rewards">
-          <div class="rewards__cards">
+          <div class="rewards__cards bamboo">
             <h3>Bamboo Stand</h3>
             <p>Pledge $25 or more</p>
             <p>You get an ergonomic stand made of natural bamboo. You've helped us launch our promotional campaign, and you’ll be added to a special Backer member list.
@@ -75,7 +76,7 @@
             <div class="reward__outofstock"></div>
           </div>
 
-          <div class="rewards__cards">
+          <div class="rewards__cards black">
             <h3>Black Edition Stand</h3>
             <p>Pledge $75 or more</p>
             <p>You get a Black Special Edition computer stand and a personal thank you. You’ll be added to our Backer member list. Shipping is included.
@@ -85,7 +86,7 @@
             <div class="reward__outofstock"></div>
           </div>
 
-          <div class="rewards__cards">
+          <div class="rewards__cards mahogany">
             <h3>Mahogany Special Edition</h3>
             <p>Pledge $200 or more</p>
             <p>You get two Special Edition Mahogany stands, a Backer T-Shirt, and a personal thank you. You’ll be added to our Backer member list. Shipping is included.
@@ -102,19 +103,18 @@
       <div class="content__card">
         <div class="rewards__header">
           <h2>Back this project</h2>
-          <input type="checkbox" id="modal__checkbox" class="modal__checkbox">
-          <label for="modal__checkbox"></label>
+          <span></span>
         </div>
         <p>Want to support us in bringing Mastercraft Bamboo Monitor Riser out in the world?</p>
         <form action="submit" class="rewards__form">
           <fieldset id="rewards__fieldset" class="rewards__fieldset">
 
             <!-- 1 -->
-            <div class="rewards__cards modal">
+            <div class="rewards__cards modal" id="modal__norewards">
               <div class="modal__top">
                 <div class="modal__radio__container">
                   <label class="custom__radio__btn">
-                    <input type="radio" value="0" min="0" id="radio__norewards" name="pledges">
+                    <input type="radio" value="0" id="radio__norewards" name="pledges">
                     <span class="checkmark"></span>
                   </label>
                   <label for="radio__norewards" class="modal__radio__container__left">
@@ -127,20 +127,21 @@
                 </div>
                 <div class=""></div>
               </div>
-              <div class="modal__cta__container">
+              <div class="modal__cta__container modal__cta--hide">
                 <p>Enter your pledge</p>
                 <div class="modal__cta">
                   <div class="cta__input__container">
-                    <input type="number" name="pledgeamount" id="pledgeamount1" value="0">
+                    <input type="number" name="pledgeamount" id="pledgeamount1" value="0" min="1">
                     <label for="pledgeamount1">&dollar;</label>
                   </div>
                   <button>Continue</button>
                 </div>
+                <span>Please enter a valid amount</span>
               </div>
             </div>
           
             <!-- 2  -->
-            <div class="rewards__cards modal">
+            <div class="rewards__cards modal" id="modal__bamboo">
               <div class="modal__top">
                 <div class="modal__radio__container">
                   <label class="custom__radio__btn">
@@ -149,7 +150,7 @@
                   </label>
                   <label for="bamboo" class="modal__radio__container__left">
                     <span>Bamboo Stand</span>
-                    <p>Pledge $25 or more</p>
+                    <span>Pledge $25 or more</span>
                   </label>
                 </div>
                 <div class="modal__text__container">
@@ -159,20 +160,21 @@
                 </div>
                 <div class=""></div>
               </div>
-              <div class="modal__cta__container">
+              <div class="modal__cta__container modal__cta--hide">
                 <p>Enter your pledge</p>
                 <div class="modal__cta">
                   <div class="cta__input__container">
-                    <input type="number" name="pledgeamount" id="pledgeamount2" value="25">
+                    <input type="number" name="pledgeamount" id="pledgeamount2" value="25" min="25">
                     <label for="pledgeamount2">&dollar;</label>
                   </div>
                   <button>Continue</button>
                 </div>
+                <span>Please enter the required amount or above</span>
               </div>
             </div>
             
             <!-- 3  -->
-            <div class="rewards__cards modal">
+            <div class="rewards__cards modal" id="modal__black">
 
               <div class="modal__top">
                 <div class="modal__radio__container">
@@ -182,7 +184,7 @@
                   </label>
                   <label for="black" class="modal__radio__container__left">
                     <span>Black Edition Stand</span>
-                    <p>Pledge $75 or more</p>
+                    <span>Pledge $75 or more</span>
                   </label>
                 </div>
   
@@ -193,20 +195,21 @@
                 </div>
                 <div class=""></div>
               </div>
-              <div class="modal__cta__container">
+              <div class="modal__cta__container modal__cta--hide">
                 <p>Enter your pledge</p>
                 <div class="modal__cta">
                   <div class="cta__input__container">
-                    <input type="number" name="pledgeamount" id="pledgeamount3" value="75">
+                    <input type="number" name="pledgeamount" id="pledgeamount3" value="75" min="75">
                     <label for="pledgeamount3">&dollar;</label>
                   </div>
                   <button>Continue</button>
                 </div>
+                <span>Please enter the required amount or above</span>
               </div>
             </div>
 
             <!-- 4  -->
-            <div class="rewards__cards modal">
+            <div class="rewards__cards modal outofstock" id="modal__mahogany">
               <div class="modal__top">
                 <div class="modal__radio__container">
                   <label class="custom__radio__btn">
@@ -215,7 +218,7 @@
                   </label>
                   <label for="mahogany" class="modal__radio__container__left">
                     <span>Mahogany Special Edition</span>
-                    <p>Pledge $200 or more</p>
+                    <span>Pledge $200 or more</span>
                   </label>
                 </div>
   
@@ -226,15 +229,16 @@
                 </div>
                 <div class="modal__outofstock"></div>
               </div>
-              <div class="modal__cta__container">
+              <div class="modal__cta__container modal__cta--hide">
                 <p>Enter your pledge</p>
                 <div class="modal__cta">
                   <div class="cta__input__container">
-                    <input type="number" name="pledgeamount" id="pledgeamount4" value="200">
+                    <input type="number" name="pledgeamount" id="pledgeamount4" value="200" min="200">
                     <label for="pledgeamount4">&dollar;</label>
                   </div>
                   <button>Continue</button>
                 </div>
+                <span>Please enter the required amount or above</span>
               </div>
             </div>
             
