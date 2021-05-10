@@ -19,7 +19,7 @@
         <img src="assets/logo.svg" alt="Crowdfunding">
       </a>
       <input type="checkbox" class="nav__checkbox" id="nav__checkbox">
-      <label class="nav__burger" for="nav__checkbox"></label>
+      <label class="nav__burger" for="nav__checkbox" tabindex="0"></label>
       <div class="nav__filter__container"></div>
       <ul>
         <li><a href="#about" title="To About page">About</a></li>
@@ -51,10 +51,11 @@
         </div>
 
         <div class="bottom__header content__card">
-          <p><strong>$89,914</strong> of $100,000 backed</p>
-          <p><strong>5,007</strong> total backers</p>
-          <p><strong>56</strong> days left</p>
-          <div></div>
+          <div class="bottom__header__highlights">
+            <p><strong>$89,914</strong> of $100,000 backed</p>
+            <p><strong>5,007</strong> total backers</p>
+            <p><strong>56</strong> days left</p>
+          </div>
           <progress value="89914" max="100000"></progress>
         </div>
       </header>
@@ -102,15 +103,15 @@
     <section class="rewards reward__modal--hide">
       <div class="content__card">
         <div class="rewards__header">
-          <h2>Back this project</h2>
-          <span></span>
+          <h2 tabindex="-1">Back this project</h2>
+          <span tabindex="0"></span>
         </div>
         <p>Want to support us in bringing Mastercraft Bamboo Monitor Riser out in the world?</p>
         <form action="submit" class="rewards__form">
           <fieldset id="rewards__fieldset" class="rewards__fieldset">
 
             <!-- 1 -->
-            <div class="rewards__cards modal" id="modal__norewards">
+            <div class="rewards__cards modal" id="modal__norewards" tabindex="0">
               <div class="modal__top">
                 <div class="modal__radio__container">
                   <label class="custom__radio__btn">
@@ -121,10 +122,12 @@
                     <span>Pledge with no reward</span>
                   </label>
                 </div>
-                <div class="modal__text__container">
+
                   <p>Choose to support us without a reward if you simply believe in our project. As a backer, you will be signed up to receive product updates via email.
                   </p>
-                </div>
+                  <p></p>
+
+
                 <div class=""></div>
               </div>
               <div class="modal__cta__container modal__cta--hide">
@@ -136,12 +139,11 @@
                   </div>
                   <button>Continue</button>
                 </div>
-                <span>Please enter a valid amount</span>
               </div>
             </div>
           
             <!-- 2  -->
-            <div class="rewards__cards modal" id="modal__bamboo">
+            <div class="rewards__cards modal" id="modal__bamboo" tabindex="0">
               <div class="modal__top">
                 <div class="modal__radio__container">
                   <label class="custom__radio__btn">
@@ -153,11 +155,12 @@
                     <span>Pledge $25 or more</span>
                   </label>
                 </div>
-                <div class="modal__text__container">
+
                   <p>You get an ergonomic stand made of natural bamboo. You've helped us launch our promotional campaign, and you’ll be added to a special Backer member list.
                   </p>
                   <p><strong>101</strong> left</p>
-                </div>
+
+
                 <div class=""></div>
               </div>
               <div class="modal__cta__container modal__cta--hide">
@@ -169,12 +172,11 @@
                   </div>
                   <button>Continue</button>
                 </div>
-                <span>Please enter the required amount or above</span>
               </div>
             </div>
             
             <!-- 3  -->
-            <div class="rewards__cards modal" id="modal__black">
+            <div class="rewards__cards modal" id="modal__black"  tabindex="0">
 
               <div class="modal__top">
                 <div class="modal__radio__container">
@@ -188,11 +190,11 @@
                   </label>
                 </div>
   
-                <div class="modal__text__container">
                   <p>You get a Black Special Edition computer stand and a personal thank you. You’ll be added to our Backer member list. Shipping is included.
                   </p>
                   <p><strong>64</strong> left</p>
-                </div>
+
+
                 <div class=""></div>
               </div>
               <div class="modal__cta__container modal__cta--hide">
@@ -204,12 +206,11 @@
                   </div>
                   <button>Continue</button>
                 </div>
-                <span>Please enter the required amount or above</span>
               </div>
             </div>
 
             <!-- 4  -->
-            <div class="rewards__cards modal outofstock" id="modal__mahogany">
+            <div class="rewards__cards modal outofstock" id="modal__mahogany"  tabindex="0">
               <div class="modal__top">
                 <div class="modal__radio__container">
                   <label class="custom__radio__btn">
@@ -222,11 +223,11 @@
                   </label>
                 </div>
   
-                <div class="modal__text__container">
                   <p>You get two Special Edition Mahogany stands, a Backer T-Shirt, and a personal thank you You’ll be added to our Backer member list. Shipping is included.
                   </p>
                   <p><strong>0</strong> left</p>
-                </div>
+
+
                 <div class="modal__outofstock"></div>
               </div>
               <div class="modal__cta__container modal__cta--hide">
@@ -238,7 +239,6 @@
                   </div>
                   <button>Continue</button>
                 </div>
-                <span>Please enter the required amount or above</span>
               </div>
             </div>
             

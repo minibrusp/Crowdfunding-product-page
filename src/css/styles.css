@@ -10,10 +10,17 @@
    --Neutral-Dark-Gray: hsl(0, 0%, 48%);
 }
 
+
+
 *,
 *::before,
 *::after {
    box-sizing: border-box;
+}
+
+*:focus-visible {
+   outline: 2px dashed var(--Primary-Moderate-Cyan);
+   outline-offset: 4px;
 }
 
 
@@ -67,6 +74,7 @@ button {
    padding: 1rem 2rem;
    border-radius: 25px;
    cursor: pointer;
+   font-family: 'Commissioner', sans-serif;
 }
 
 button:hover {
@@ -108,7 +116,6 @@ header.masthead .logo {
 header.masthead .logo:hover,
 header.masthead .logo:focus {
    transform: scale(1.1);
-   outline: none;
 }
 
 header.masthead .nav__checkbox {
@@ -125,10 +132,9 @@ header.masthead .nav__burger {
    transition: transform .3s;
 }
 
-header.masthead .nav__burger:hover,
-header.masthead .nav__burger:focus {
+header.masthead .nav__burger:hover {
    transform: scale(1.1);
-   /* outline: none; */
+   outline: none;
 }
 
 header.masthead .nav__checkbox:checked~.nav__burger {
@@ -137,7 +143,7 @@ header.masthead .nav__checkbox:checked~.nav__burger {
    width: 20px;
    height: 20px;
    background-position: center;
-   transform: rotate(-180deg)scale(1.1);
+   transform: rotate(-180deg) scale(1);
    transition: transform .3s;
 }
 
@@ -194,15 +200,21 @@ header.masthead ul>li:hover {
 }
 
 header.masthead ul a {
-   display: block;
+   display: none;
    color: var(--Neutral-Black);
    padding: 28px 25px;
    font-weight: 500;
    transition: all .5s;
 }
 
-header.masthead ul a:hover {
+header.masthead .nav__checkbox:checked~ul a {
+   display: block;
+}
+
+header.masthead ul a:hover,
+header.masthead ul a:focus {
    background-color: var(--Primary-Moderate-Cyan);
+   outline: none;
 }
 
 
@@ -258,8 +270,11 @@ header .bottom__header {
 }
 
 .top__header button:first-of-type {
-   padding: 1.2rem 2.5rem;
    font-size: .9rem;
+   /* padding: 1.2rem 2rem; */
+   padding: 1.2rem 0;
+   width: 55vw;
+   max-width: 204px;
 }
 
 .top__header button:last-of-type {
@@ -268,11 +283,22 @@ header .bottom__header {
    background-color: transparent;
    height: 56px;
    margin-left: 10px;
-   transition: all .5s;
 }
 
 .top__header button:last-of-type:active {
    transform: scale(1.1);
+}
+
+.top__header button:last-child svg {
+   transition: all .5s;
+}
+
+.top__header button:last-child:hover svg g circle {
+   fill: #707070;
+}
+
+.top__header button:last-child:hover svg g path {
+   fill: #B1B1B1;
 }
 
 .top__header button:last-of-type svg g circle,
@@ -280,15 +306,11 @@ header .bottom__header {
    transition: fill .3s;
 }
 
-/* .top__header button:last-of-type:focus svg g circle {
-   fill: #147b74;
-   transition: fill .3s;
+.top__header button:last-of-type:hover span {
+   color: #707070;
 }
 
-.top__header button:last-of-type:focus svg g path {
-   fill: white;
-   transition: fill .3s;
-} */
+
 
 
 
@@ -402,6 +424,7 @@ header .bottom__header {
    padding: 95px 23px;
    z-index: 3;
    height: 100%;
+   width: 100%;
 }
 
 .rewards__header {
@@ -440,6 +463,12 @@ header .bottom__header {
 .modal {
    padding: 23px 0;
    cursor: pointer;
+   outline: none;
+}
+
+.modal.outofstock:focus-visible {
+   outline: 2px dashed var(--Primary-Moderate-Cyan);
+   outline-offset: 4px;
 }
 
 .modal__top {
@@ -490,6 +519,10 @@ header .bottom__header {
    font-weight: 600;
 }
 
+.modal__radio__container__left span:hover {
+   color: var(--Primary-Moderate-Cyan);
+}
+
 .modal__radio__container__left span+span {
    display: block;
    margin: 5px auto;
@@ -497,11 +530,15 @@ header .bottom__header {
    font-weight: 500;
 }
 
-.modal__text__container p:last-of-type {
+.modal__radio__container__left span:hover+span {
+   font-weight: 600;
+}
+
+.modal__top p:last-of-type {
    font-size: 15px;
 }
 
-.modal__text__container p strong {
+.modal__top p strong {
    font-size: 1.2rem;
    margin-right: 7px;
 }
@@ -538,6 +575,10 @@ header .bottom__header {
    font-family: 'Commissioner', sans-serif;
 }
 
+.modal__cta .cta__input__container input:focus-visible {
+   border: 1px solid var(--Primary-Moderate-Cyan);
+}
+
 .cta__input__container label {
    display: block;
    position: absolute;
@@ -570,6 +611,7 @@ header .bottom__header {
    justify-content: center;
    align-items: center;
    display: none;
+   max-width: 540px;
 }
 
 .success__msg .success__text__container {
@@ -605,6 +647,10 @@ header .bottom__header {
    transition: fill .3s;
 }
 
+.top__header button:last-of-type .bookmarked__span--color {
+   color: var(--Primary-Dark-Cyan);
+}
+
 .reward__modal--hide {
    display: none;
 }
@@ -621,8 +667,8 @@ header .bottom__header {
    border: 1px solid red;
 }
 
-.modal__cta__container .input__span--invalid {
-   display: block;
+.modal__cta__container .input__message--invalid {
+   color: red;
 }
 
 .outofstock .modal__outofstock {
@@ -634,4 +680,463 @@ header .bottom__header {
    width: 100%;
    height: 100%;
    cursor: default;
+}
+
+.success__msg--active {
+   display: flex;
+   position: fixed;
+   transform: translate(-50%, -50%);
+   left: 50%;
+   top: 50%;
+   width: 83.5vw;
+}
+
+
+@media screen and (max-width: 350px) {
+
+   .top__header .top__header__cta {
+      flex-direction: column-reverse;
+   }
+
+   .top__header button {
+      margin: 10px 0;
+   }
+
+   .top__header button:last-of-type {
+      background-color: var(--Primary-Moderate-Cyan);
+      display: flex;
+      justify-content: start;
+      align-items: center;
+      border-radius: 30px;
+      background-color: rgba(0, 0, 0, 0.15);
+      width: 53vw;
+      margin: 10px;
+      transition: none;
+   }
+
+   .top__header button:last-of-type svg {
+      margin-right: 15px;
+   }
+
+   .top__header button:last-of-type span {
+      display: inline-block;
+      color: rgb(82 80 80);
+      font-weight: 600;
+      font-family: 'Commissioner';
+      font-size: .9rem;
+   }
+
+   .modal__cta {
+      flex-direction: column;
+   }
+
+   .modal__cta .cta__input__container {
+      margin: 10px;
+   }
+
+   .modal__cta .cta__input__container input {
+      width: 100%;
+   }
+
+   .modal__cta__container span {
+      text-align: center;
+   }
+
+   .modal__cta button {
+      margin: 10px;
+   }
+
+}
+
+@media screen and (max-width: 320px) {
+
+   article {
+      margin: -85px .5rem;
+   }
+
+   .top__header button:last-of-type svg {
+      margin-right: 3px;
+   }
+
+   .content__card {
+      text-align: center;
+      padding: 40px .5rem;
+   }
+
+   .rewards {
+      padding: 95px .5rem;
+   }
+
+   .about .rewards__cards p:last-of-type {
+      justify-content: center;
+   }
+
+   .modal .modal__radio__container {
+      flex-direction: column;
+   }
+
+   .modal .modal__radio__container .custom__radio__btn {
+      margin: 10px;
+   }
+}
+
+@media screen and (min-width: 750px) {
+
+   header.masthead {
+      background-position: center;
+   }
+
+   .content__card {
+      max-width: 730px;
+   }
+
+   .top__header .top__header__cta {
+      justify-content: space-between;
+      width: 70%;
+      margin: 0 auto;
+   }
+
+   .top__header button:last-of-type {
+      border-radius: 30px;
+      background-color: #f4f4f4;
+      margin: 0;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      width: 173px;
+      max-width: 173px;
+   }
+
+   .top__header button span {
+      display: unset;
+      margin-left: 10px;
+      color: #707070;
+      font-weight: 600;
+      font-family: 'Commissioner';
+      font-size: .9rem;
+   }
+
+   .bottom__header .bottom__header__highlights {
+      display: flex;
+      justify-content: start;
+      align-items: center;
+      padding: 0 30px;
+   }
+
+   .bottom__header p {
+      margin: 0;
+      margin-right: 40px;
+   }
+
+   .bottom__header p:nth-of-type(2) {
+      margin: 0;
+      margin-right: 40px;
+      padding: 0 90px 0 45px;
+      border: none;
+      max-width: none;
+      border-right: 1px solid lightgray;
+      border-left: 1px solid lightgray;
+   }
+
+   .bottom__header progress {
+      padding: 0 30px;
+   }
+
+   .rewards__cards {
+      display: grid;
+      grid-template-areas:
+         "title . subtitle"
+         "text text text"
+         "stock . button";
+      justify-items: center;
+      align-items: center;
+      padding: 30px;
+   }
+
+   .rewards__cards h3 {
+      grid-area: title;
+      justify-self: start;
+      margin: 0;
+   }
+
+   .promotional__rewards .rewards__cards p:first-of-type {
+      grid-area: subtitle;
+      justify-self: end;
+      font-size: .9rem;
+   }
+
+   .rewards__cards p:nth-of-type(2) {
+      grid-area: text;
+      text-align: justify;
+   }
+
+   .about .rewards__cards p:last-of-type {
+      grid-area: stock;
+      justify-self: start;
+      margin: 0;
+   }
+
+   .rewards__cards button {
+      grid-area: button;
+      justify-self: end;
+   }
+
+
+   /* modal 750 */
+
+   .rewards {
+      width: 100%;
+   }
+
+   .rewards .rewards__cards {
+      display: flex;
+      flex-direction: column;
+      padding: 30px 0 20px 0;
+      max-width: 640px;
+   }
+
+   .modal__top {
+      display: grid;
+      grid-template-columns: 39px repeat(2, 1fr);
+      grid-template-areas:
+         "radioandspans radioandspans radioandspans . stocks"
+         ". text text text text";
+      justify-content: center;
+      align-items: center;
+      padding: 0 25px;
+   }
+
+   .modal .modal__radio__container {
+      grid-area: radioandspans;
+   }
+
+   .modal .modal__radio__container .custom__radio__btn {
+      margin: 0 15px 0 0;
+   }
+
+   .modal__radio__container__left {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+   }
+
+   .modal__radio__container__left span:last-of-type {
+      margin: 0;
+   }
+
+   .modal__radio__container__left span:first-of-type {
+      margin-right: 20px;
+   }
+
+   .rewards .rewards__cards p {
+      grid-area: text;
+      margin: 20px 0;
+      width: 100%;
+   }
+
+   .rewards .rewards__cards p:nth-of-type(2) {
+      grid-area: stocks;
+      margin: 0;
+   }
+
+   .modal__cta__container {
+      width: 100%;
+      flex-direction: row;
+      justify-content: space-between;
+      padding: 20px 25px 0 40px;
+      position: relative;
+   }
+
+   .modal__cta {
+      justify-content: flex-end;
+   }
+
+   .success__msg {
+      max-width: 540px;
+   }
+
+}
+
+@media screen and (min-width: 850px) {
+
+   h1 {
+      font-size: 1.7rem;
+      margin: 1rem auto 0 auto;
+   }
+
+   h2 {
+      font-size: 1.3rem;
+   }
+
+   h3 {
+      font-size: 1.2rem;
+   }
+
+   p {
+      font-size: 1rem;
+      margin: 13px auto;
+   }
+
+   header.masthead {
+      background-position: bottom;
+      background-image: url(../../assets/image-hero-desktop.jpg);
+      padding: 2rem 2.82353vw;
+   }
+
+   header.masthead .nav__burger {
+      display: none;
+   }
+
+
+   header.masthead ul {
+      margin: 0;
+      position: relative;
+      background-color: unset;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      height: auto;
+      opacity: 1;
+      transition: none;
+   }
+
+   header.masthead .nav__checkbox:checked~ul {
+      height: auto;
+   }
+
+   header.masthead ul>li,
+   header.masthead ul>li:hover {
+      border: none;
+   }
+
+   header.masthead ul a {
+      display: block;
+      color: white;
+      font-weight: 400;
+      padding: 0 0 0 32px;
+      font-size: 0.83rem;
+      transition: none;
+   }
+
+   header.masthead ul a:hover,
+   header.masthead ul a:focus {
+      background-color: unset;
+      text-decoration: underline;
+   }
+
+   .top__header button:first-of-type {
+      font-size: 15px;
+      padding: 1.17rem 0;
+   }
+
+   .top__header .top__header__cta {
+      margin: 35px auto 7px auto;
+   }
+
+   .bottom__header .bottom__header__highlights {
+      padding: 3px 30px;
+   }
+
+   .bottom__header p {
+      line-height: 1.55;
+   }
+
+   .bottom__header progress {
+      margin: 30px auto 10px auto;
+   }
+
+   .about {
+      padding: 50px 45px;
+   }
+
+   .about p {
+      margin: 37px auto;
+      line-height: 1.875;
+   }
+
+   .rewards__cards p {
+      margin: 25px auto 14px auto;
+   }
+
+   .rewards .content__card {
+      padding: 50px 45px;
+   }
+
+   .rewards h2 {
+      font-size: 1.5rem;
+      margin: 0px 0 3px 0;
+   }
+
+   .rewards p {
+      margin: 13px auto 34px auto;
+   }
+
+   .modal__top {
+      padding: 0 15px;
+   }
+
+   .modal__radio__container__left span:first-of-type {
+      font-size: 1rem;
+   }
+
+   .rewards .modal p {
+      margin: 15px 0 12px 0;
+   }
+
+   .modal__cta .cta__input__container input {
+      padding: .93rem .7rem .93rem 2.4rem;
+   }
+
+   .cta__input__container label {
+      top: 15px;
+   }
+
+   .modal__cta button {
+      padding: .9rem 1.5rem;
+   }
+
+
+   .success__msg img {
+      width: 90px;
+      height: 90px;
+   }
+
+   .success__msg p {
+      margin-top: 40px;
+      margin-bottom: 0;
+   }
+
+   .success__msg p strong {
+      font-size: 1.5rem;
+   }
+
+   .success__msg p:nth-of-type(2) {
+      margin-top: 10px;
+   }
+
+   .success__msg button {
+      align-self: center;
+      margin-top: 10px;
+   }
+
+}
+
+@media screen and (min-width: 950px) {
+   header.masthead {
+      padding: 2rem 5.82353vw;
+   }
+}
+
+@media screen and (min-width:1200px) {
+   header.masthead {
+      padding: 2rem 11.3889vw;
+   }
+}
+
+@media screen and (min-width: 1440px) {
+   header.masthead nav {
+      max-width: 1112px;
+      margin: 0 auto;
+   }
+
 }
