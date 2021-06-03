@@ -219,7 +219,7 @@ function renderPromotionalRewardsItems(project, parentNode) {
       div.appendChild(h3);
 
       let p1 = document.createElement('p');
-      p1.textContent = `Pledge ${promoReward.pledgeMinimum} or more`;
+      p1.textContent = `Pledge $${promoReward.pledgeMinimum} or more`;
 
       div.appendChild(p1);
 
