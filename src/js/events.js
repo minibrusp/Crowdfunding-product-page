@@ -269,11 +269,11 @@ export default function eventInit(project) {
       updateBackers(totalBackersDisplay, currentBackers);
       updateBackedAmount(totalBackedAmountDisplay, intModalPledgeAmount, totalBackedAmountProgress, currentBacked);
       checkStocksAvailability();
+      modalReset();
+      let modalDiv = document.querySelector('.rewards div');
+      modalDiv.style.display = 'none';
    
       setTimeout(()=> {
-         modalReset();
-         let modalDiv = document.querySelector('.rewards div');
-         modalDiv.style.display = 'none';
          modalDiv.nextElementSibling.classList.toggle('success__msg--active');
          document.querySelector('.success__msg p strong').scrollIntoView({block: 'center'});
       }, 500);
