@@ -332,7 +332,7 @@ export default function eventInit(project) {
       let newCurrentBackers;
       newCurrentBackers= 1 + currentBackers;
       updateCurrentBackers(newCurrentBackers);
-      newCurrentBackers = newCurrentBackers.toLocaleString();
+      newCurrentBackers = newCurrentBackers.toLocaleString('en-US');
       totalBackersDisplay.innerHTML = newCurrentBackers;
    }
    
@@ -341,7 +341,7 @@ export default function eventInit(project) {
       newCurrentBacked = intModalPledgeAmount + currentBacked;
       updateCurrentBackedAmount(newCurrentBacked)
       updateProgressBarValue(totalBackedAmountProgress, newCurrentBacked);
-      newCurrentBacked = newCurrentBacked.toLocaleString();
+      newCurrentBacked = newCurrentBacked.toLocaleString('en-US');
       totalBackedAmountDisplay.innerHTML = `$${newCurrentBacked}`;
    }
    
